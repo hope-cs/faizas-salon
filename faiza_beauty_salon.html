@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Faiza's Beauty Salon — Islamabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose:    #c2636a;
+    --rose-lt: #f5e6e7;
+    --gold:    #b89a6a;
+    --gold-lt: #f7f1e8;
+    --ink:     #2b2022;
+    --ink-mid: #6b5558;
+    --ink-lt:  #a89496;
+    --cream:   #faf6f1;
+    --white:   #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background: var(--cream);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .salon-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 6px 14px;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--ink-lt);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: #a89496;
+    line-height: 1.8;
+    max-width: 360px;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rose);
+    padding-bottom: 4px;
+    transition: gap 0.3s;
+  }
+  .hero-cta:hover { gap: 16px; }
+  .hero-cta span { color: var(--rose); font-size: 18px; }
+
+  .hero-right {
+    background: var(--rose-lt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+  }
+
+  .hero-ornament {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 220px;
+    font-weight: 300;
+    color: rgba(194,99,106,0.07);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-card {
+    background: var(--white);
+    padding: 32px 28px;
+    border-left: 3px solid var(--rose);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 80px 0;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
+  .divider-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--gold);
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 0;
+    padding: 80px;
+    align-items: start;
+  }
+
+  .about-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .about-heading em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .about-body {
+    padding-left: 60px;
+    border-left: 1px solid var(--gold-lt);
+  }
+
+  .about-body p {
+    font-size: 15px;
+    color: var(--ink-mid);
+    margin-bottom: 20px;
+    line-height: 1.9;
+  }
+
+  .quote-block {
+    margin: 32px 0;
+    padding: 24px 32px;
+    background: var(--gold-lt);
+    border-left: 3px solid var(--gold);
+  }
+
+  .quote-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--ink);
+    padding: 80px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .service-item {
+    background: #3a2a2c;
+    padding: 40px 32px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--rose);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .service-item:hover { background: #4a3335; }
+  .service-item:hover::before { transform: scaleX(1); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(194,99,106,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: #a89496;
+    line-height: 1.7;
+  }
+
+  /* ── WHY US ── */
+  .why {
+    padding: 80px;
+    background: var(--white);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+  }
+
+  .why-card {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px solid var(--gold-lt);
+    position: relative;
+  }
+
+  .why-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .why-text {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--rose-lt);
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .contact-heading em { font-style: italic; color: var(--rose); }
+
+  .contact-sub {
+    font-size: 14px;
+    color: var(--ink-mid);
+    margin-bottom: 40px;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: var(--rose);
+  }
+
+  .contact-detail { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+  .contact-detail strong { display: block; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); font-weight: 500; margin-bottom: 2px; }
+
+  .contact-map {
+    background: var(--white);
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(184,154,106,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-placeholder {
+    text-align: center;
+  }
+
+  .map-pin {
+    font-size: 48px;
+    color: var(--rose);
+    margin-bottom: 12px;
+  }
+
+  .map-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink-mid);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--white);
+  }
+
+  .footer-brand span { color: var(--rose); font-style: italic; }
+
+  .footer-note {
+    font-size: 12px;
+    color: var(--ink-lt);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .about, .contact { grid-template-columns: 1fr; }
+    .hero-left::after { display: none; }
+    .services-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+    .about-body { padding-left: 0; border-left: none; padding-top: 32px; }
+    .hero-right { min-height: 400px; }
+    .about, .services, .why, .contact, footer { padding: 48px 32px; }
+    .divider { padding: 40px 32px 0; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 580px) {
+    .services-grid, .why-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="salon-tag">Est. 2000 · Islamabad</div>
+    <h1 class="hero-title">Faiza's<br><em>Beauty</em><br>Salon</h1>
+    <p class="hero-sub">F-6 & F-7 Markaz, Islamabad</p>
+    <p class="hero-desc">
+      For over two decades, Faiza's Beauty Salon has been Islamabad's most trusted destination for women who seek genuine care, skilled hands, and a warm, welcoming environment.
+    </p>
+    <a href="#contact" class="hero-cta">Book an Appointment <span>→</span></a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-ornament">F</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Years of Service</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Branches in Islamabad</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Women-Only Space</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-icon">✦</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div>
+    <p class="about-label">Our Story</p>
+    <h2 class="about-heading">More than beauty —<br>it's <em>confidence</em></h2>
+  </div>
+  <div class="about-body">
+    <p>
+      Faiza's Beauty Salon was founded in 2000 with a simple belief: every woman deserves to feel beautiful, cared for, and confident. Starting from a single location in Islamabad, Faiza built her salon around one thing — genuine relationships with every client who walks through the door.
+    </p>
+    <p>
+      Today, with two branches in F-6 and F-7 Markaz, our team of skilled beauty professionals continues that same tradition. We don't rush. We listen. We work with your features, your style, and your occasion to bring out the best version of you.
+    </p>
+    <div class="quote-block">
+      <p>"Every woman who sits in our chair leaves more confident than when she arrived — that is our promise."</p>
+    </div>
+    <p>
+      Whether you're preparing for your wedding, a family event, or simply want a relaxing afternoon of self-care, Faiza's is your home away from home in Islamabad.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-header">
+    <p class="section-tag">What We Offer</p>
+    <h2 class="section-title">Our <em>Services</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div class="service-name">Bridal Makeup</div>
+      <div class="service-desc">Complete bridal packages crafted for your most important day — from Mehndi to Walima.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div class="service-name">Party & Event Makeup</div>
+      <div class="service-desc">Flawless, long-lasting looks for weddings, formal dinners, and special occasions.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div class="service-name">Hair Styling</div>
+      <div class="service-desc">Haircuts, hair color, blow-dry, keratin treatments, and hair extensions by experienced stylists.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <div class="service-name">Skin & Facial Treatments</div>
+      <div class="service-desc">Rejuvenating facials, skin cleanses, and anti-aging treatments using professional products.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <div class="service-name">Nail Care</div>
+      <div class="service-desc">Manicures, pedicures, nail art, and nail extensions in a relaxing setting.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <div class="service-name">Waxing & Threading</div>
+      <div class="service-desc">Precise, gentle hair removal services for face and body with premium products.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="section-header">
+    <p class="section-tag" style="color: var(--rose);">Why Choose Us</p>
+    <h2 class="section-title" style="color: var(--ink);">What makes <em>Faiza's</em> different</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">💎</div>
+      <div class="why-title">Affordable Luxury</div>
+      <div class="why-text">Premium beauty services at prices that respect your budget — no hidden charges.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌸</div>
+      <div class="why-title">Women-Only Space</div>
+      <div class="why-text">A fully private, comfortable, and respectful environment exclusively for women.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✨</div>
+      <div class="why-title">25 Years of Trust</div>
+      <div class="why-text">Hundreds of loyal clients have trusted us for their most important moments since 2000.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <div class="why-title">Two Locations</div>
+      <div class="why-text">Conveniently located in F-6 and F-7 Markaz, easily accessible from all areas of Islamabad.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <p class="about-label">Get In Touch</p>
+    <h2 class="contact-heading">Visit us in<br><em>Islamabad</em></h2>
+    <p class="contact-sub">We'd love to welcome you. Walk in or call ahead to reserve your time with us.</p>
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail">
+          <strong>Locations</strong>
+          Faiza's Salon F-6 Markaz, Islamabad<br>
+          Faiza's Salon F-7 Markaz, Islamabad
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail">
+          <strong>Phone</strong>
+          Call us to book your appointment
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🕐</div>
+        <div class="contact-detail">
+          <strong>Hours</strong>
+          Open daily · Morning to Evening
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-map">
+    <div class="map-placeholder">
+      <div class="map-pin">📌</div>
+      <div class="map-text">F-6 & F-7 Markaz<br>Islamabad, Pakistan</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Faiza's <span>Beauty Salon</span></div>
+  <div class="footer-note">Islamabad's trusted beauty destination since 2000</div>
+</footer>
+
+</body>
+</html>
